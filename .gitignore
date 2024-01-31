@@ -1,0 +1,65 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+gradle.properties
+# built application files
+*.apk
+*.ap_
+mfm-push/build/
+palette/build/
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/**
+gen/**
+out/**
+
+# Local configuration file (sdk path, etc)
+.gradletasknamecache
+*.ipr
+*.iws
+.idea/
+classes/**
+target/**
+.vscode/
+
+# Gradle
+.gradle/**
+build/**
+/rearck
+buildSrc/build/
+buildSrc/build-cache/
+build-cache/
+/reports/
+
+moduleDependencies.dot
+moduleDependencies.png
+
+autoTestResults/
+projectScripts/tests.properties
+projectScripts/ui-launcher-all-*.jar
+translates.csv
+
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+*.hprof
+
+artifactory_ssl.crt
