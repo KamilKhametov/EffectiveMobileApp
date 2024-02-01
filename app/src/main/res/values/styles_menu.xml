@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Design.BottomNavigationView.TextAppearance.Active" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/text_size_10</item>
+    </style>
+
+    <style name="Widget.Design.BottomNavigationView.TextAppearance" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/text_size_10</item>
+    </style>
+</resources>

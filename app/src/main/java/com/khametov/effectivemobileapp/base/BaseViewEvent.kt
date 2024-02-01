@@ -1,0 +1,3 @@
+package com.khametov.effectivemobileapp.base
+
+interface BaseViewEvent

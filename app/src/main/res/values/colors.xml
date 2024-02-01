@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="green">#9DC217</color>
+    <color name="blue">#3772FF</color>
+    <color name="red">#F34545</color>
+    <color name="purple">#9F57D7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="orange">#F37820</color>
+
+    <color name="dark">#343944</color>
+    <color name="gray">#85888F</color>
+    <color name="light_gray">#D6D7DA</color>
+    <color name="light_gray_ECECEC">#ECECEC</color>
+    <color name="light">#F5F5F6</color>
+
+    <color name="not_action_color_but">#D6D7DA</color>
+    <color name="action_color_but">#F37820</color>
+    <color name="default_text_color">#343944</color>
+    <color name="text_in_name_and_surname">#85888F</color>
+
+    <color name="green_light">#D8E6CE</color>
+    <color name="green_light_2">#F5F9F2</color>
+    <color name="yellow">#ECAF5A</color>
+
+    <color name="gray_default_dot">#808F9680</color>
+
+    <!-- primary pink -->
+    <color name="pink_primary">#D62F89</color>
+
 </resources>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">EffectiveMobileApp</string>
+
+    <string name="click_double_for_exit">Нажмите дважды для выхода</string>
+
+    <!-- Errors -->
+    <string name="error_server_timeout">Истекло время ожидания от сервера. Пожалуйста, попробуйте позже!</string>
+    <string name="error_server_internal">Не удалось установить соединение с сервером. Пожалуйста, попробуйте позже!</string>
+    <string name="error_server_network">Нет удалось установить соединение с сервероом. Пожалуйста, проверьте свое интернетподключение!</string>
+    <string name="error_server_unknown">Неизвестная ошибка. Пожалуйста, попробуйте позже!</string>
+
+    <!-- Nav bar items -->
+    <string name="nav_bar_home">Главная</string>
+    <string name="nav_bar_catalog">Каталог</string>
+    <string name="nav_bar_basket">Корзина</string>
+    <string name="nav_bar_sale">Акции</string>
+    <string name="nav_bar_profile">Профиль</string>
+
 </resources>
