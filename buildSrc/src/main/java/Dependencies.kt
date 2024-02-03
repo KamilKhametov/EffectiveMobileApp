@@ -20,4 +20,5 @@ object Dependencies {
     const val dagger = "com.google.dagger:dagger:${Version.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val tinkoffPhoneMask = "ru.tinkoff.decoro:decoro:${Version.tinkoffPhoneMask}"
+    const val gson = "com.google.code.gson:gson:${Version.gson}"
 }

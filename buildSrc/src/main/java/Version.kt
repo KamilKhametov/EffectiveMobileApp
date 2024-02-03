@@ -24,4 +24,5 @@ object Version {
     const val tinkoffPhoneMask = "1.5.1"
     const val fbMessaging = "23.1.2"
     const val barcode = "4.3.0"
+    const val gson = "2.8.9"
 }

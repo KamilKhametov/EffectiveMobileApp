@@ -73,6 +73,7 @@ dependencies {
     implementation(Dependencies.serializationConverter)
     implementation(Dependencies.dagger)
     implementation(Dependencies.tinkoffPhoneMask)
+    implementation(Dependencies.gson)
 
     kapt(Dependencies.daggerCompiler)
 }

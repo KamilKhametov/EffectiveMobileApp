@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toolbarTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:fontFamily="@font/sf_pro_medium"
+        android:text="@string/auth_screen_toolbar_title"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarTitleTextView">
+
+        <LinearLayout
+            android:id="@+id/inputNameContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:background="@drawable/background_light_gray_round_8"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputNameEditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/sf_pro_regular"
+                android:hint="Имя"
+                android:inputType="text"
+                android:paddingStart="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                tools:text="Марина" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clearNameImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:src="@drawable/icv_close_28"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inputSurnameContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:background="@drawable/background_light_gray_round_8"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputSurnameEditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/sf_pro_regular"
+                android:hint="Фамилия"
+                android:inputType="text"
+                android:paddingStart="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                tools:text="Иванова" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clearSurnameImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:src="@drawable/icv_close_28"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inputPhoneContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:background="@drawable/background_light_gray_round_8"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputPhoneEditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/sf_pro_regular"
+                android:hint="Номер телефона"
+                android:inputType="phone"
+                android:paddingStart="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                tools:text="+ 7 993 877 44 02" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clearPhoneImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:src="@drawable/icv_close_28"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logInButton"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_32"
+            android:background="@drawable/background_light_pink_round_8"
+            android:fontFamily="@font/sf_pro_medium"
+            android:text="@string/auth_screen_log_in_button_title"
+            android:enabled="false"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_12"
+        android:fontFamily="@font/sf_pro_regular"
+        android:gravity="center"
+        android:text="@string/auth_screen_privacy_policy_title"
+        android:textColorLink="@color/grey"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

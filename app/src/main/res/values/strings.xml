@@ -16,4 +16,9 @@
     <string name="nav_bar_sale">Акции</string>
     <string name="nav_bar_profile">Профиль</string>
 
+    <!-- Auth screen -->
+    <string name="auth_screen_toolbar_title">Вход</string>
+    <string name="auth_screen_privacy_policy_title">Нажимая кнопку “Войти”, Вы принимаете\n<a href="">условия программы лояльности</a></string>
+    <string name="auth_screen_log_in_button_title">Войти</string>
+
 </resources>

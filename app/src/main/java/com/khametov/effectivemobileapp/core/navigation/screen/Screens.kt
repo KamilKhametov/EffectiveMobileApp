@@ -2,6 +2,7 @@ package com.khametov.effectivemobileapp.core.navigation.screen
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.khametov.effectivemobileapp.core.navigation.core.TabContainerFragment
+import com.khametov.effectivemobileapp.presentation.auth.ui.AuthFragment
 import com.khametov.effectivemobileapp.presentation.basket.ui.BasketFragment
 import com.khametov.effectivemobileapp.presentation.catalog.ui.CatalogFragment
 import com.khametov.effectivemobileapp.presentation.flow.ui.FlowFragment
@@ -17,6 +18,10 @@ object Screens {
 
     fun flow() = FragmentScreen {
         FlowFragment.newInstance()
+    }
+
+    fun auth() = FragmentScreen {
+        AuthFragment.newInstance()
     }
 
     fun main() = FragmentScreen {
