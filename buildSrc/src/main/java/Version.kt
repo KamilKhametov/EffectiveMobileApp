@@ -25,4 +25,5 @@ object Version {
     const val fbMessaging = "23.1.2"
     const val barcode = "4.3.0"
     const val gson = "2.8.9"
+    const val pagerIndicator = "1.2.5"
 }

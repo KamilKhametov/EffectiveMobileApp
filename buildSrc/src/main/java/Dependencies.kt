@@ -21,4 +21,5 @@ object Dependencies {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val tinkoffPhoneMask = "ru.tinkoff.decoro:decoro:${Version.tinkoffPhoneMask}"
     const val gson = "com.google.code.gson:gson:${Version.gson}"
+    const val pagerIndicator = "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:${Version.pagerIndicator}"
 }

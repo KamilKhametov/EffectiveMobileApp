@@ -21,4 +21,7 @@
     <string name="auth_screen_privacy_policy_title">Нажимая кнопку “Войти”, Вы принимаете\n<a href="">условия программы лояльности</a></string>
     <string name="auth_screen_log_in_button_title">Войти</string>
 
+    <!-- Catalog screen -->
+    <string name="catalog_screen_rating_and_reviews_count"><font fgcolor='#F9A249'>%s</font> (%s)</string>
+
 </resources>

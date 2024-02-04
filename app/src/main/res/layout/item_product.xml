@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_8"
+    android:layout_marginHorizontal="@dimen/dimen_8"
+    android:background="@drawable/background_white_with_light_grey_border_radius_8">
+
+    <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+        android:id="@+id/pagerIndicatorContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation_1"
+        app:layout_constraintBottom_toBottomOf="@id/imagesRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/imagesRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/imagesRecyclerView"
+        app:spi_dotColor="@color/light_gray"
+        app:spi_dotSelectedColor="@color/pink_primary"
+        app:spi_dotSelectedSize="4dp"
+        app:spi_dotSize="4dp"
+        app:spi_dotSpacing="@dimen/dimen_8"
+        app:spi_visibleDotCount="3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imagesRecyclerView"
+        android:layout_width="168dp"
+        android:layout_height="144dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addToFavoriteImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_6"
+        android:layout_marginEnd="@dimen/dimen_6"
+        android:src="@drawable/icv_favorite_off"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/oldPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagesRecyclerView"
+        tools:text="749 ₽" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:fontFamily="@font/sf_pro_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oldPriceTextView"
+        tools:text="489 ₽" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/discountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:background="@drawable/background_pink_round_4"
+        android:fontFamily="@font/sf_pro_regular"
+        android:paddingHorizontal="@dimen/dimen_6"
+        android:paddingVertical="@dimen/dimen_2"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintBottom_toBottomOf="@id/priceTextView"
+        app:layout_constraintStart_toEndOf="@id/priceTextView"
+        app:layout_constraintTop_toTopOf="@id/priceTextView"
+        tools:text="-35%" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/brandTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:fontFamily="@font/sf_pro_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceTextView"
+        tools:text="ESFOLIO" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_6"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brandTextView"
+        tools:text="Лосьон для тела`ESFOLIO` COENZYME Q 10 Увлажняющий 500 мл" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ratingAndReviewsCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:drawableStart="@drawable/icv_rating_yellow_16"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="@dimen/text_size_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+        tools:text="4.5 (51)" />
+
+    <LinearLayout
+        android:id="@+id/addToButtonContainer"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@color/pink_primary"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingAndReviewsCountTextView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icv_plus_white_24" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

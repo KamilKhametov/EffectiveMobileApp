@@ -74,6 +74,7 @@ dependencies {
     implementation(Dependencies.dagger)
     implementation(Dependencies.tinkoffPhoneMask)
     implementation(Dependencies.gson)
+    implementation(Dependencies.pagerIndicator)
 
     kapt(Dependencies.daggerCompiler)
 }
