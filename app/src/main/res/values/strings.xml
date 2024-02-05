@@ -23,5 +23,13 @@
 
     <!-- Catalog screen -->
     <string name="catalog_screen_rating_and_reviews_count"><font fgcolor='#F9A249'>%s</font> (%s)</string>
+    <string name="price">%s ₽</string>
+    <string name="discount">-%1$d%%</string>
+
+    <string-array name="sort">
+        <item>По популярности</item>
+        <item>По уменьшению цены</item>
+        <item>По возрастанию цены</item>
+    </string-array>
 
 </resources>

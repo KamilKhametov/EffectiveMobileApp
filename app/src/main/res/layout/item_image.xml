@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/productImageView"
+    android:layout_width="168dp"
+    android:layout_height="144dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:src="@drawable/lotion"/>

@@ -18,21 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sortTextView"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sortTypeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_24"
-        android:drawableStart="@drawable/icv_sort_24"
-        android:drawableEnd="@drawable/icv_down_20"
-        android:drawablePadding="@dimen/dimen_4"
-        android:fontFamily="@font/sf_pro_regular"
-        android:text="По популярности"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_14"
+        android:src="@drawable/icv_sort_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarTitleTextView" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/sortTypeImageView"
+        app:layout_constraintStart_toEndOf="@id/sortTypeImageView"
+        app:layout_constraintTop_toTopOf="@id/sortTypeImageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/filterTextView"
@@ -66,9 +68,9 @@
         android:id="@+id/productsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="@dimen/dimen_8"
         android:layout_marginTop="@dimen/dimen_24"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_8"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

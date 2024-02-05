@@ -1,13 +1,15 @@
 package com.khametov.effectivemobileapp.presentation.catalog.ui
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-
 import com.khametov.R
 import com.khametov.databinding.ItemProductBinding
+import com.khametov.effectivemobileapp.common.extension.getFormattedPrice
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.ProductImageModel
 
@@ -17,35 +19,35 @@ class ProductsAdapter:
     private val images = arrayListOf(
         ProductImageModel(
             id = "cbf0c984-7c6c-4ada-82da-e29dc698bb50",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.britva, R.drawable.gel)
         ),
         ProductImageModel(
             id = "54a876a5-2205-48ba-9498-cfecff4baa6e",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.penka, R.drawable.lotion)
         ),
         ProductImageModel(
             id = "75c84407-52e1-4cce-a73a-ff2d3ac031b3",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.gel, R.drawable.britva)
         ),
         ProductImageModel(
             id = "16f88865-ae74-4b7c-9d85-b68334bb97db",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.deco, R.drawable.care)
         ),
         ProductImageModel(
             id = "26f88856-ae74-4b7c-9d85-b68334bb97db",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.lotion, R.drawable.deco)
         ),
         ProductImageModel(
             id = "15f88865-ae74-4b7c-9d81-b78334bb97db",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.britva, R.drawable.penka)
         ),
         ProductImageModel(
             id = "88f88865-ae74-4b7c-9d81-b78334bb97db",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.care, R.drawable.deco)
         ),
         ProductImageModel(
             id = "55f58865-ae74-4b7c-9d81-b78334bb97db",
-            image = listOf(R.drawable.icv_favorite_on)
+            image = listOf(R.drawable.penka, R.drawable.gel)
         )
     )
 
@@ -64,13 +66,41 @@ class ProductsAdapter:
     inner class CatalogProductViewHolder(val itemBinding: ItemProductBinding):
         RecyclerView.ViewHolder(itemBinding.root) {
 
+        private val imagesAdapter = ImagesAdapter()
+
+        init {
+            with(itemBinding) {
+                imagesRecyclerView.adapter = imagesAdapter
+                PagerSnapHelper().attachToRecyclerView(imagesRecyclerView)
+                pagerIndicatorContainer.attachToRecyclerView(imagesRecyclerView)
+            }
+        }
+
         fun bind(model: CatalogItemEntity) {
 
             with(itemBinding) {
 
-                oldPriceTextView.text = model.price.priceWithDiscount
-                priceTextView.text = model.price.price
-                discountTextView.text = model.price.discount.toString()
+                val necessaryImages = images.firstOrNull { it.id == model.id }?.image
+
+                imagesAdapter.submitList(necessaryImages)
+
+                oldPriceTextView.text = itemView.context.getString(
+                    R.string.price,
+                    model.price.priceWithDiscount
+                )
+
+                oldPriceTextView.paintFlags =
+                    oldPriceTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+
+                priceTextView.text = itemView.context.getString(
+                    R.string.price,
+                    model.price.price
+                )
+
+                discountTextView.text = itemView.context.getString(
+                    R.string.discount,
+                    model.price.discount
+                )
                 brandTextView.text = model.title
                 descriptionTextView.text = model.subtitle
                 ratingAndReviewsCountTextView.text = itemView.context.getString(

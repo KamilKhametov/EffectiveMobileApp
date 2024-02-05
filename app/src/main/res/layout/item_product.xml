@@ -25,9 +25,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imagesRecyclerView"
-        android:layout_width="168dp"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
         android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_4"
+        android:paddingTop="@dimen/dimen_4"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

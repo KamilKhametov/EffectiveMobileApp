@@ -7,6 +7,7 @@
     android:layout_marginStart="@dimen/dimen_6">
 
     <LinearLayout
+        android:id="@+id/tagContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_light_gray_round_100"
@@ -29,6 +30,7 @@
             tools:text="Лицо" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cancelImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
