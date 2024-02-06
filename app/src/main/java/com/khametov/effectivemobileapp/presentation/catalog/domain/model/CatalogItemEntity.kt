@@ -1,5 +1,9 @@
 package com.khametov.effectivemobileapp.presentation.catalog.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CatalogItemEntity(
     val id: String,
     val title: String,
@@ -11,4 +15,4 @@ data class CatalogItemEntity(
     val description: String,
     val info: List<CatalogInfoEntity>,
     val ingredients: String
-)
+): Parcelable

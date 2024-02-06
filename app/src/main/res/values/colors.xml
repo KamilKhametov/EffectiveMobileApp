@@ -7,7 +7,7 @@
     <color name="purple">#9F57D7</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="orange">#F37820</color>
+    <color name="orange">#F9A249</color>
 
     <color name="dark">#343944</color>
     <color name="gray">#85888F</color>
@@ -31,5 +31,6 @@
     <color name="light_gray">#F8F8F8</color>
     <color name="grey">#A0A1A3</color>
     <color name="dark_blue">#52606D</color>
+    <color name="dark_grey">#3E3E3E</color>
 
 </resources>

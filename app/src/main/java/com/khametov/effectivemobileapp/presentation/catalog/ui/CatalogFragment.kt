@@ -80,7 +80,11 @@ class CatalogFragment:
     }
 
     private val productsAdapter by uiLazy {
-        ProductsAdapter()
+        ProductsAdapter(
+            onItemClick = { model ->
+                viewModel.perform(CatalogViewEvent.NavigateToDetails(model))
+            }
+        )
     }
 
     override fun setupInjection() {
@@ -95,7 +99,7 @@ class CatalogFragment:
             productsRecyclerView.adapter = productsAdapter
         }
 
-        setupSortSpinner()
+//        setupSortSpinner()
         setupTags()
     }
 

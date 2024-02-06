@@ -13,8 +13,9 @@ import com.khametov.effectivemobileapp.common.extension.getFormattedPrice
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.ProductImageModel
 
-class ProductsAdapter:
-    ListAdapter<CatalogItemEntity, ProductsAdapter.CatalogProductViewHolder>(DiffCallback()) {
+class ProductsAdapter(
+    private val onItemClick: (model: CatalogItemEntity) -> Unit
+): ListAdapter<CatalogItemEntity, ProductsAdapter.CatalogProductViewHolder>(DiffCallback()) {
 
     private val images = arrayListOf(
         ProductImageModel(
@@ -86,7 +87,7 @@ class ProductsAdapter:
 
                 oldPriceTextView.text = itemView.context.getString(
                     R.string.price,
-                    model.price.priceWithDiscount
+                    model.price.price
                 )
 
                 oldPriceTextView.paintFlags =
@@ -94,7 +95,7 @@ class ProductsAdapter:
 
                 priceTextView.text = itemView.context.getString(
                     R.string.price,
-                    model.price.price
+                    model.price.priceWithDiscount
                 )
 
                 discountTextView.text = itemView.context.getString(
@@ -108,6 +109,10 @@ class ProductsAdapter:
                     model.feedback.rating.toString(),
                     model.feedback.count.toString()
                 )
+
+                itemView.setOnClickListener {
+                    onItemClick(model)
+                }
             }
         }
     }

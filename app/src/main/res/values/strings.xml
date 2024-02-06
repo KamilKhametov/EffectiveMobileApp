@@ -32,4 +32,23 @@
         <item>По возрастанию цены</item>
     </string-array>
 
+    <!-- KT -->
+    <plurals name="kt_screen_available_count">
+        <item quantity="one">Доступно для заказа %s штука</item>
+        <item quantity="few">Доступно для заказа %s штук</item>
+        <item quantity="many">Доступно для заказа %s штук</item>
+        <item quantity="other">Доступно для заказа %s штук</item>
+    </plurals>
+
+    <plurals name="kt_screen_reviews_count">
+        <item quantity="one">%s отзыв</item>
+        <item quantity="few">%s отзыва</item>
+        <item quantity="many">%s отзывов</item>
+        <item quantity="other">%s отзывов</item>
+    </plurals>
+
+    <string name="kt_screen_rating_count">%s</string>
+    <string name="kt_screen_hide_title">Скрыть</string>
+    <string name="kt_screen_show_more_title">Подробнее</string>
+
 </resources>

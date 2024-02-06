@@ -2,6 +2,7 @@ package com.khametov.effectivemobileapp.presentation.catalog.vm
 
 import com.khametov.effectivemobileapp.base.BaseViewModel
 import com.khametov.effectivemobileapp.core.navigation.router.CustomRouter
+import com.khametov.effectivemobileapp.core.navigation.screen.Screens
 import com.khametov.effectivemobileapp.presentation.catalog.domain.repository.CatalogRepository
 import com.khametov.effectivemobileapp.presentation.catalog.intents.CatalogViewEvent
 import com.khametov.effectivemobileapp.presentation.catalog.intents.CatalogViewState
@@ -25,7 +26,9 @@ class CatalogViewModel @AssistedInject constructor(
     }
 
     override fun observe(event: CatalogViewEvent) {
-
+        when (event) {
+            is CatalogViewEvent.NavigateToDetails -> router.forward(Screens.productDetails(event.model))
+        }
     }
 
     init {
