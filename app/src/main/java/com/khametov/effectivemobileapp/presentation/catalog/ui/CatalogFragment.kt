@@ -33,7 +33,7 @@ class CatalogFragment:
 
     private var sortPosition = 0
 
-    private var currentTag = ""
+    private var currentTag = "all"
 
     private val tags = arrayListOf(
         TagModel(
@@ -70,11 +70,12 @@ class CatalogFragment:
                 currentTag = tagModel.type
 
                 changeClickedStateOnTag(tagModel.id)
-                sortProductsByTag(tagModel.type)
+                viewModel.perform(CatalogViewEvent.SortByTag(tagModel.type))
             },
             cancelSort = {
+                currentTag = "all"
                 changeClickedStateOnTag("")
-                sortProductsByTag("all")
+                viewModel.perform(CatalogViewEvent.SortByTag("all"))
             }
         )
     }
@@ -83,6 +84,9 @@ class CatalogFragment:
         ProductsAdapter(
             onItemClick = { model ->
                 viewModel.perform(CatalogViewEvent.NavigateToDetails(model))
+            },
+            addToFavorite = { isAdd, model ->
+                viewModel.perform(CatalogViewEvent.AddToFavorites(isAdd, model, currentTag))
             }
         )
     }
@@ -95,11 +99,12 @@ class CatalogFragment:
 
         with(viewBinding) {
 
+            productsRecyclerView.itemAnimator = null
+
             tagsRecyclerView.adapter = tagAdapter
             productsRecyclerView.adapter = productsAdapter
         }
 
-//        setupSortSpinner()
         setupTags()
     }
 
@@ -134,7 +139,7 @@ class CatalogFragment:
     }
 
     override fun render(state: CatalogViewState) {
-        renderProducts(state.catalogEntity?.items ?: listOf())
+        renderProducts(state.catalogItems ?: listOf())
     }
 
     private fun setupTags() {
@@ -147,7 +152,7 @@ class CatalogFragment:
             productsAdapter.submitList(list)
 
             allProductsList.clear()
-            allProductsList.addAll(viewModel.viewState().value.catalogEntity?.items ?: listOf())
+            allProductsList.addAll(viewModel.viewState().value.catalogItems ?: listOf())
         }
     }
 
@@ -162,24 +167,6 @@ class CatalogFragment:
         }
 
         tagAdapter.submitList(tagsWithClickedList)
-    }
-
-    private fun sortProductsByTag(type: String) {
-
-        val productsByTag =
-            viewModel.viewState().value.catalogEntity?.items?.filter { catalogItemEntity ->
-                catalogItemEntity.tags.any {
-
-                    if (type == "all") {
-                        productsAdapter.submitList(allProductsList)
-                        return
-                    }
-
-                    it == type
-                }
-            }
-
-        productsAdapter.submitList(productsByTag)
     }
 
     override fun onBackPressed(): Boolean {

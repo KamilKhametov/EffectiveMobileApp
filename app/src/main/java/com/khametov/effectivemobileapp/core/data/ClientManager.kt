@@ -1,5 +1,7 @@
 package com.khametov.effectivemobileapp.core.data
 
+import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
+
 /**
  * Интерфейс для храненеия пользовательских данных
  */
@@ -16,4 +18,8 @@ interface ClientManager {
     suspend fun saveUserPhone(phone: String)
 
     suspend fun getUserPhone(): String?
+
+    suspend fun saveOrDeleteFavorites(isSave: Boolean, model: CatalogItemEntity)
+
+    suspend fun getFavorites(): List<CatalogItemEntity>?
 }

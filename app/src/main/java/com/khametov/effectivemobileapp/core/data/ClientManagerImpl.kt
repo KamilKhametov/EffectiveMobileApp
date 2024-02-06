@@ -1,7 +1,13 @@
 package com.khametov.effectivemobileapp.core.data
 
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.khametov.effectivemobileapp.base.BaseStoragePreferences
+import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogEntity
+import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
+import org.json.JSONArray
+import org.json.JSONObject
 import javax.inject.Inject
 
 class ClientManagerImpl @Inject constructor(
@@ -32,6 +38,41 @@ class ClientManagerImpl @Inject constructor(
         return readString(PREF_USER_PHONE, null)
     }
 
+    override suspend fun saveOrDeleteFavorites(isSave: Boolean, model: CatalogItemEntity) {
+
+        val favoritesList = getFavorites().orEmpty().toMutableList()
+
+        if (isSave) {
+            favoritesList.add(model)
+        } else {
+            val a = favoritesList.indexOfFirst { it.id == model.id }
+            favoritesList.removeAt(a)
+        }
+
+        putJson(
+            PREF_FAVORITES,
+            JSONObject().put(PREF_FAVORITES, JSONArray(Gson().toJson(favoritesList)))
+        )
+    }
+
+    override suspend fun getFavorites(): List<CatalogItemEntity>? {
+
+        var favoritesList: List<CatalogItemEntity>? = null
+
+        readJson(PREF_FAVORITES)?.let { jsonObject ->
+
+            val jsonArray = jsonObject.get(PREF_FAVORITES) ?: false
+            val listFromJson = GsonBuilder().create()
+                .fromJson(jsonArray.toString(), Array<CatalogItemEntity>::class.java)
+                .orEmpty()
+                .toList()
+
+            if (listFromJson.isNotEmpty()) favoritesList = listFromJson
+        }
+
+        return favoritesList?.distinct()
+    }
+
     private companion object {
 
         private const val PREF_NAME = "CLIENT_PREFERENCES_NAME"
@@ -41,5 +82,7 @@ class ClientManagerImpl @Inject constructor(
         private const val PREF_USER_SURNAME = "PREF_USER_SURNAME"
 
         private const val PREF_USER_PHONE = "PREF_USER_PHONE"
+
+        private const val PREF_FAVORITES = "PREF_FAVORITES"
     }
 }

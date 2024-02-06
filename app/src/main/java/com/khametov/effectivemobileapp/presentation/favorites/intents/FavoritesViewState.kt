@@ -1,8 +1,8 @@
-package com.khametov.effectivemobileapp.presentation.catalog.intents
+package com.khametov.effectivemobileapp.presentation.favorites.intents
 
 import com.khametov.effectivemobileapp.base.BaseViewState
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
 
-data class CatalogViewState(
-    val catalogItems: List<CatalogItemEntity>? = null
+data class FavoritesViewState(
+    val favoritesData: List<CatalogItemEntity>? = null
 ): BaseViewState

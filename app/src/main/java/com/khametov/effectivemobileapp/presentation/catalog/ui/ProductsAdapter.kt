@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.khametov.R
 import com.khametov.databinding.ItemProductBinding
-import com.khametov.effectivemobileapp.common.extension.getFormattedPrice
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.CatalogItemEntity
 import com.khametov.effectivemobileapp.presentation.catalog.domain.model.ProductImageModel
 
 class ProductsAdapter(
-    private val onItemClick: (model: CatalogItemEntity) -> Unit
+    private val onItemClick: (model: CatalogItemEntity) -> Unit,
+    private val addToFavorite: (isAdd: Boolean, model: CatalogItemEntity) -> Unit
 ): ListAdapter<CatalogItemEntity, ProductsAdapter.CatalogProductViewHolder>(DiffCallback()) {
 
     private val images = arrayListOf(
@@ -113,6 +113,16 @@ class ProductsAdapter(
                 itemView.setOnClickListener {
                     onItemClick(model)
                 }
+
+                if (model.isFavorite) {
+                    addToFavoriteImageView.setBackgroundResource(R.drawable.icv_favorite_on)
+                } else {
+                    addToFavoriteImageView.setBackgroundResource(R.drawable.icv_favorite_off)
+                }
+
+                addToFavoriteImageView.setOnClickListener {
+                    addToFavorite(!model.isFavorite, model)
+                }
             }
         }
     }
@@ -139,6 +149,7 @@ class ProductsAdapter(
                     && oldItem.description == newItem.description
                     && oldItem.info == newItem.info
                     && oldItem.ingredients == newItem.ingredients
+                    && oldItem.isFavorite == newItem.isFavorite
         }
     }
 }

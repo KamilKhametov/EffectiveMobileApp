@@ -14,5 +14,6 @@ data class CatalogItemEntity(
     val available: Int,
     val description: String,
     val info: List<CatalogInfoEntity>,
-    val ingredients: String
+    val ingredients: String,
+    val isFavorite: Boolean = false
 ): Parcelable

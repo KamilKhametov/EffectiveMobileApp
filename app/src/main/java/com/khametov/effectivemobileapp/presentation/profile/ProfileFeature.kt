@@ -1,4 +1,4 @@
-package com.khametov.effectivemobileapp.presentation.catalog
+package com.khametov.effectivemobileapp.presentation.profile
 
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.khametov.effectivemobileapp.base.BaseApplication
@@ -7,19 +7,18 @@ import com.khametov.effectivemobileapp.core.data.ClientManager
 import com.khametov.effectivemobileapp.core.navigation.router.CustomRouter
 import com.khametov.effectivemobileapp.core.network.NetworkWrapper
 import com.khametov.effectivemobileapp.core.network.RestApi
-import com.khametov.effectivemobileapp.core.trackers.FavoritesTracker
-import com.khametov.effectivemobileapp.presentation.catalog.di.CatalogComponent
-import com.khametov.effectivemobileapp.presentation.catalog.di.DaggerCatalogComponent
+import com.khametov.effectivemobileapp.presentation.profile.di.DaggerProfileComponent
+import com.khametov.effectivemobileapp.presentation.profile.di.ProfileComponent
 
-object CatalogFeature {
+object ProfileFeature {
 
-    private var component: CatalogComponent? = null
+    private var component: ProfileComponent? = null
 
-    fun getComponent(): CatalogComponent =
+    fun getComponent(): ProfileComponent =
         component ?: run {
-            component = DaggerCatalogComponent.factory()
+            component = DaggerProfileComponent.factory()
                 .create(
-                    coreDependencies = CatalogCoreDependenciesDelegate(
+                    coreDependencies = ProfileCoreDependenciesDelegate(
                         baseComponent = BaseApplication.app.baseComponent
                     )
                 )
@@ -31,18 +30,17 @@ object CatalogFeature {
     }
 }
 
-interface CatalogCoreDependencies {
+interface ProfileCoreDependencies {
 
     fun provideRouter(): CustomRouter
     fun provideNavigationHolder(): NavigatorHolder
     fun provideClientManager(): ClientManager
     fun provideRestApi(): RestApi
-    fun provideFavoritesTracker(): FavoritesTracker
 }
 
-internal class CatalogCoreDependenciesDelegate(
+internal class ProfileCoreDependenciesDelegate(
     private val baseComponent: BaseComponent
-): CatalogCoreDependencies {
+): ProfileCoreDependencies {
 
     override fun provideRouter(): CustomRouter {
         return baseComponent.provideRouter()
@@ -58,9 +56,5 @@ internal class CatalogCoreDependenciesDelegate(
 
     override fun provideRestApi(): RestApi {
         return NetworkWrapper.getApi().provideApiClass()
-    }
-
-    override fun provideFavoritesTracker(): FavoritesTracker {
-        return baseComponent.provideFavoritesTracker()
     }
 }
