@@ -7,6 +7,7 @@ import com.khametov.effectivemobileapp.core.data.ClientManager
 import com.khametov.effectivemobileapp.core.navigation.router.CustomRouter
 import com.khametov.effectivemobileapp.core.network.NetworkWrapper
 import com.khametov.effectivemobileapp.core.network.RestApi
+import com.khametov.effectivemobileapp.core.trackers.FavoritesTracker
 import com.khametov.effectivemobileapp.presentation.details.di.DaggerProductDetailsComponent
 import com.khametov.effectivemobileapp.presentation.details.di.ProductDetailsComponent
 
@@ -36,6 +37,7 @@ interface ProductDetailsCoreDependencies {
     fun provideNavigationHolder(): NavigatorHolder
     fun provideClientManager(): ClientManager
     fun provideRestApi(): RestApi
+    fun provideFavoritesTracker(): FavoritesTracker
 }
 
 internal class ProductDetailsCoreDependenciesDelegate(
@@ -56,5 +58,9 @@ internal class ProductDetailsCoreDependenciesDelegate(
 
     override fun provideRestApi(): RestApi {
         return NetworkWrapper.getApi().provideApiClass()
+    }
+
+    override fun provideFavoritesTracker(): FavoritesTracker {
+        return baseComponent.provideFavoritesTracker()
     }
 }

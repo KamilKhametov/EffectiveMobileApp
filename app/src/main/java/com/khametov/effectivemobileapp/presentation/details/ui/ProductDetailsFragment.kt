@@ -87,16 +87,37 @@ class ProductDetailsFragment: BaseMviFragment<ProductDetailsViewState, ProductDe
             backImageView.setOnClickListener {
                 onBackPressed()
             }
+
+            addToFavoriteImageView.setOnClickListener {
+                viewModel.perform(
+                    ProductDetailsViewEvent.AddToFavorites(
+                        isAdd = !viewModel.viewState().value.isFavorite,
+                        model = itemModel!!
+                    )
+                )
+            }
         }
     }
 
     override fun render(state: ProductDetailsViewState) {
         renderProductDataList(state.productDataList)
+        renderFavoriteState(state.isFavorite)
     }
 
     private fun renderProductDataList(list: List<ProductDetailsAdapterModel>?) {
         if (list != null) {
             adapter.setItems(list)
+        }
+    }
+
+    private fun renderFavoriteState(isAdd: Boolean) {
+        with(viewBinding) {
+
+            if (isAdd) {
+                addToFavoriteImageView.setBackgroundResource(R.drawable.icv_favorite_on)
+            } else {
+                addToFavoriteImageView.setBackgroundResource(R.drawable.icv_favorite_off)
+            }
         }
     }
 

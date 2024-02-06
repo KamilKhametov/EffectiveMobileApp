@@ -10,4 +10,9 @@ sealed class ProductDetailsViewEvent: BaseViewEvent {
     data class SetProductData(
         val model: CatalogItemEntity
     ): ProductDetailsViewEvent()
+
+    data class AddToFavorites(
+        val isAdd: Boolean,
+        val model: CatalogItemEntity
+    ): ProductDetailsViewEvent()
 }

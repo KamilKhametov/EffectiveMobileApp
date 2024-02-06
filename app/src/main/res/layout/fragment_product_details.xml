@@ -32,7 +32,7 @@
         android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_16"
         android:elevation="@dimen/elevation_10"
-        android:src="@drawable/icv_favorite_on"
+        tools:src="@drawable/icv_favorite_on"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/shareImageView" />
 

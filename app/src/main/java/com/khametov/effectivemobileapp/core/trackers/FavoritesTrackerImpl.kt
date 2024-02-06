@@ -10,7 +10,8 @@ class FavoritesTrackerImpl @Inject constructor(): FavoritesTracker {
 
     private val favoritesStateFlow = MutableSharedFlow<Boolean>(
         extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_LATEST
+        onBufferOverflow = BufferOverflow.DROP_LATEST,
+        replay = 1
     )
 
     override suspend fun setFavorites(state: Boolean) {
