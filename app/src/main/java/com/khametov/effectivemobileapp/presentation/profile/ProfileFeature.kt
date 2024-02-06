@@ -7,6 +7,7 @@ import com.khametov.effectivemobileapp.core.data.ClientManager
 import com.khametov.effectivemobileapp.core.navigation.router.CustomRouter
 import com.khametov.effectivemobileapp.core.network.NetworkWrapper
 import com.khametov.effectivemobileapp.core.network.RestApi
+import com.khametov.effectivemobileapp.core.trackers.FavoritesTracker
 import com.khametov.effectivemobileapp.presentation.profile.di.DaggerProfileComponent
 import com.khametov.effectivemobileapp.presentation.profile.di.ProfileComponent
 
@@ -36,6 +37,7 @@ interface ProfileCoreDependencies {
     fun provideNavigationHolder(): NavigatorHolder
     fun provideClientManager(): ClientManager
     fun provideRestApi(): RestApi
+    fun provideTracker(): FavoritesTracker
 }
 
 internal class ProfileCoreDependenciesDelegate(
@@ -56,5 +58,9 @@ internal class ProfileCoreDependenciesDelegate(
 
     override fun provideRestApi(): RestApi {
         return NetworkWrapper.getApi().provideApiClass()
+    }
+
+    override fun provideTracker(): FavoritesTracker {
+        return baseComponent.provideFavoritesTracker()
     }
 }

@@ -73,6 +73,13 @@ class ClientManagerImpl @Inject constructor(
         return favoritesList?.distinct()
     }
 
+    override suspend fun clearUserData() {
+        clearKey(PREF_USER_NAME)
+        clearKey(PREF_USER_SURNAME)
+        clearKey(PREF_USER_PHONE)
+        clearKey(PREF_FAVORITES)
+    }
+
     private companion object {
 
         private const val PREF_NAME = "CLIENT_PREFERENCES_NAME"

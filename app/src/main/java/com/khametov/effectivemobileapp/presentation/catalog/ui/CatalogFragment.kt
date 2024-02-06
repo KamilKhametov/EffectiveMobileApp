@@ -1,12 +1,10 @@
 package com.khametov.effectivemobileapp.presentation.catalog.ui
 
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khametov.R
 import com.khametov.databinding.FragmentCatalogBinding
 import com.khametov.effectivemobileapp.base.BaseMviFragment
+import com.khametov.effectivemobileapp.common.extension.postDelayed
 import com.khametov.effectivemobileapp.common.extension.uiLazy
 import com.khametov.effectivemobileapp.common.extension.viewModels
 import com.khametov.effectivemobileapp.presentation.catalog.CatalogFeature
@@ -29,9 +27,7 @@ class CatalogFragment:
 
     private val viewBinding by viewBinding<FragmentCatalogBinding>()
 
-    private val allProductsList = arrayListOf<CatalogItemEntity>()
-
-    private var sortPosition = 0
+    private var isFirstOpen = true
 
     private var currentTag = "all"
 
@@ -103,39 +99,21 @@ class CatalogFragment:
 
             tagsRecyclerView.adapter = tagAdapter
             productsRecyclerView.adapter = productsAdapter
+
+            sortTextView.setOnClickListener {
+                CatalogSortBottomSheet.show(
+                    childFragmentManager,
+                    selectSort = { type, name ->
+
+                        sortTextView.text = name
+
+                        viewModel.perform(CatalogViewEvent.SortProducts(type))
+                    }
+                )
+            }
         }
 
         setupTags()
-    }
-
-    private fun setupSortSpinner() {
-
-        val sortTypes = resources.getStringArray(R.array.sort)
-
-        with(viewBinding) {
-
-            val adapter = ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_spinner_item,
-                sortTypes
-            )
-
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-
-                    sortPosition = position
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
     }
 
     override fun render(state: CatalogViewState) {
@@ -149,10 +127,14 @@ class CatalogFragment:
     private fun renderProducts(list: List<CatalogItemEntity>) {
 
         if (list.isNotEmpty()) {
-            productsAdapter.submitList(list)
-
-            allProductsList.clear()
-            allProductsList.addAll(viewModel.viewState().value.catalogItems ?: listOf())
+            productsAdapter.submitList(list) {
+                postDelayed(200) {
+                    if (isFirstOpen) {
+                        viewBinding.productsRecyclerView.layoutManager?.scrollToPosition(0)
+                        isFirstOpen = false
+                    }
+                }
+            }
         }
     }
 

@@ -22,4 +22,6 @@ interface ClientManager {
     suspend fun saveOrDeleteFavorites(isSave: Boolean, model: CatalogItemEntity)
 
     suspend fun getFavorites(): List<CatalogItemEntity>?
+
+    suspend fun clearUserData()
 }

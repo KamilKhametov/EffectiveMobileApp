@@ -4,6 +4,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.khametov.R
 import com.khametov.databinding.FragmentProfileBinding
 import com.khametov.effectivemobileapp.base.BaseMviFragment
+import com.khametov.effectivemobileapp.common.extension.orZero
+import com.khametov.effectivemobileapp.common.extension.setPhoneMaskForTextView
 import com.khametov.effectivemobileapp.common.extension.viewModels
 import com.khametov.effectivemobileapp.presentation.profile.ProfileFeature
 import com.khametov.effectivemobileapp.presentation.profile.intents.ProfileViewEvent
@@ -35,11 +37,34 @@ class ProfileFragment:
 
                 viewModel.perform(ProfileViewEvent.NavigateToFavoritesScreen)
             }
+
+            logOutButton.setOnClickListener {
+                viewModel.perform(ProfileViewEvent.ClearUserData)
+            }
         }
     }
 
     override fun render(state: ProfileViewState) {
+        renderUserData(
+            state.userFullName.orEmpty(),
+            state.userPhone.orEmpty(),
+            state.favoritesCount.orZero()
+        )
+    }
 
+    private fun renderUserData(name: String, phone: String, favoritesCount: Int) {
+
+        with(viewBinding) {
+
+            userNameTextView.text = name
+            userNumberTextView.setPhoneMaskForTextView()
+            userNumberTextView.text = phone
+            favoritesCountTextView.text = resources.getQuantityString(
+                R.plurals.profile_screen_favorites_count,
+                favoritesCount,
+                favoritesCount
+            )
+        }
     }
 
     override fun onBackPressed(): Boolean {

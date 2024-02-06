@@ -51,4 +51,12 @@
     <string name="kt_screen_hide_title">Скрыть</string>
     <string name="kt_screen_show_more_title">Подробнее</string>
 
+    <!-- Profile screen -->
+    <plurals name="profile_screen_favorites_count">
+        <item quantity="one">%s товар</item>
+        <item quantity="few">%s товара</item>
+        <item quantity="many">%s товаров</item>
+        <item quantity="other">%s товаров</item>
+    </plurals>
+
 </resources>

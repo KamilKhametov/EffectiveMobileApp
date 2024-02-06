@@ -5,4 +5,5 @@ import com.khametov.effectivemobileapp.base.BaseViewEvent
 sealed class ProfileViewEvent : BaseViewEvent{
 
     object NavigateToFavoritesScreen: ProfileViewEvent()
+    object ClearUserData: ProfileViewEvent()
 }

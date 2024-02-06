@@ -1,6 +1,5 @@
 package com.khametov.effectivemobileapp.presentation.catalog.vm
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.khametov.effectivemobileapp.base.BaseViewModel
 import com.khametov.effectivemobileapp.core.navigation.router.CustomRouter
@@ -26,6 +25,8 @@ class CatalogViewModel @AssistedInject constructor(
 
     private var currentTag = "all"
 
+    private var currentType = 0
+
     private var isFirstOpen = true
 
     val allProductsList = arrayListOf<CatalogItemEntity>()
@@ -45,6 +46,11 @@ class CatalogViewModel @AssistedInject constructor(
             is CatalogViewEvent.SortByTag -> {
                 updateState {
                     copy(catalogItems = sortByTag(event.tag))
+                }
+            }
+            is CatalogViewEvent.SortProducts -> {
+                updateState {
+                    copy(catalogItems = sortProducts(event.type))
                 }
             }
         }
@@ -112,18 +118,56 @@ class CatalogViewModel @AssistedInject constructor(
 
     private fun sortByTag(tag: String, list: List<CatalogItemEntity> = allProductsList): List<CatalogItemEntity> {
 
+        currentTag = tag
+
         val listWithCurrentTag = list.filter { catalogItemEntity ->
             catalogItemEntity.tags.any {
 
                 if (tag == "all") {
-                    return allProductsList.toList()
+                    return allProductsList.checkSort(currentType)
                 }
 
                 it == tag
             }
         }
 
-        return listWithCurrentTag
+        return listWithCurrentTag.checkSort(currentType)
+    }
+
+    private fun List<CatalogItemEntity>.checkSort(type: Int): List<CatalogItemEntity> {
+        return when (type) {
+            0 -> return sortedByDescending { it.feedback.rating }
+            1 -> return sortedByDescending { it.price.priceWithDiscount }
+            2 -> return sortedBy { it.price.priceWithDiscount }
+
+            else -> listOf()
+        }
+    }
+
+    private fun sortProducts(type: Int): List<CatalogItemEntity>? {
+
+        currentType = type
+
+        val list: List<CatalogItemEntity>? = null
+
+        when (type) {
+            0 -> {
+
+                return sortByTag(currentTag).sortedByDescending { it.feedback.rating }
+            }
+
+            1 -> {
+
+                return sortByTag(currentTag).sortedByDescending { it.price.priceWithDiscount }
+            }
+
+            2 -> {
+
+                return sortByTag(currentTag).sortedBy { it.price.priceWithDiscount }
+            }
+        }
+
+        return list
     }
 
     private fun observeFavorites() {

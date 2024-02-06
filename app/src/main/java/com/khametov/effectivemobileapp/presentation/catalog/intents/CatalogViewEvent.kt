@@ -17,4 +17,8 @@ sealed class CatalogViewEvent: BaseViewEvent {
     data class SortByTag(
         val tag: String
     ): CatalogViewEvent()
+
+    data class SortProducts(
+        val type: Int
+    ): CatalogViewEvent()
 }
